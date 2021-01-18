@@ -47,6 +47,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11913AC225B5DB6D0054201F /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				11D8005725AF47DD00C5C6B6 /* DataModel.swift */,
+				11D8004125A8052600C5C6B6 /* Checklist.swift */,
+				119EE289258B01CB00132834 /* ChecklistItem.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		11913AC325B5DB770054201F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				119EE276258AF73200132834 /* ChecklistViewController.swift */,
+				119EE28D2590899600132834 /* ItemDetailViewController.swift */,
+				11D8003E25A7FCD400C5C6B6 /* AllListsViewController.swift */,
+				11D8004425A8352100C5C6B6 /* ListDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		11913AC425B5DB810054201F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				119EE27B258AF73300132834 /* Assets.xcassets */,
+				119EE27D258AF73300132834 /* LaunchScreen.storyboard */,
+				119EE278258AF73200132834 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		119EE266258AF73200132834 = {
 			isa = PBXGroup;
 			children = (
@@ -66,18 +97,11 @@
 		119EE271258AF73200132834 /* Checklists */ = {
 			isa = PBXGroup;
 			children = (
+				11913AC425B5DB810054201F /* Resources */,
+				11913AC325B5DB770054201F /* View Controllers */,
+				11913AC225B5DB6D0054201F /* Data Models */,
 				119EE272258AF73200132834 /* AppDelegate.swift */,
-				119EE278258AF73200132834 /* Main.storyboard */,
-				119EE27B258AF73300132834 /* Assets.xcassets */,
-				119EE27D258AF73300132834 /* LaunchScreen.storyboard */,
 				119EE280258AF73300132834 /* Info.plist */,
-				119EE276258AF73200132834 /* ChecklistViewController.swift */,
-				119EE289258B01CB00132834 /* ChecklistItem.swift */,
-				119EE28D2590899600132834 /* ItemDetailViewController.swift */,
-				11D8003E25A7FCD400C5C6B6 /* AllListsViewController.swift */,
-				11D8004125A8052600C5C6B6 /* Checklist.swift */,
-				11D8004425A8352100C5C6B6 /* ListDetailViewController.swift */,
-				11D8005725AF47DD00C5C6B6 /* DataModel.swift */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
