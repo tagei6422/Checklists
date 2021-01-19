@@ -19,8 +19,9 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //取消注册，手动创建不同类型的cell，具体见tableView(_:cellForRowAt:)方法
         //注册cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         //大标题
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -46,10 +47,19 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cell :UITableViewCell!
+        //如果复用池里面有cell，则取出，没有则新建一个cell，样式为subtitle
+        if let c = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
+            cell = c
+        }else{
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
+        }
+//        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         let checklist = dataModel.lists[indexPath.row]
         cell.textLabel!.text = checklist.name
         cell.accessoryType = .detailDisclosureButton
+        
+        cell.detailTextLabel!.text = "\(checklist.countUncheckedItems()) Remaining"
         
         return cell
     }
