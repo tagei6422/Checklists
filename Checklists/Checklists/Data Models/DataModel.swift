@@ -51,6 +51,8 @@ class DataModel{
             let decoder = PropertyListDecoder()
             do{
                 lists = try decoder.decode([Checklist].self, from: data)
+                //确保现有的lists也是排好序的
+                sortChecklists()
             }catch{
                 print("Error decoding list array: \(error.localizedDescription)")
             }
@@ -78,5 +80,9 @@ class DataModel{
         }
     }
     
+    //用闭包写排序的代码
+    func sortChecklists(){
+        lists.sort(by: {list1, list2 in return list1.name.localizedStandardCompare(list2.name) == .orderedAscending })
+    }
     
 }
