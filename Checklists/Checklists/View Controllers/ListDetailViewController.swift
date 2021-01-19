@@ -21,6 +21,7 @@ protocol ListDetailViewControllerDelegate: class{
 class ListDetailViewController: UITableViewController, UITextFieldDelegate{
     @IBOutlet weak var textFeild: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet weak var iconImage: UITableViewCell!
     
     weak var delegate: ListDetailViewControllerDelegate?
     
