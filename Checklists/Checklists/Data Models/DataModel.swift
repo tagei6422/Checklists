@@ -85,4 +85,14 @@ class DataModel{
         lists.sort(by: {list1, list2 in return list1.name.localizedStandardCompare(list2.name) == .orderedAscending })
     }
     
+    
+    //获取当前的ChecklistItemID，class方法，可以不用具体的对象来调用，直接用类来调用这个方法
+    class func nextChecklistItemID() -> Int{
+        let userDefaults = UserDefaults.standard
+        let itemID = userDefaults.integer(forKey: "ChecklistItemID")
+        userDefaults.set(itemID + 1, forKey: "ChecklistItemID")
+        //同步到disk
+        userDefaults.synchronize()
+        return itemID
+    }
 }

@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import UserNotifications
 
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
     let dataModel = DataModel()
@@ -27,7 +28,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = window!.rootViewController as! UINavigationController
         let controller = navigationController.viewControllers[0] as! AllListsViewController
         controller.dataModel = dataModel
-
+        
+        let center = UNUserNotificationCenter.current()
+        //Notification authorization 申请获取权限（有声音的提示）
+//        center.requestAuthorization(options: [.alert, .sound]){
+//            granted, error in
+//            if granted {
+//                print("We have permission")
+//            }else{
+//                print("Permission denied")
+//            }
+//        }
+        
+        //设置delegate
+        center.delegate = self
+        
+//        //增加通知的内容
+//        let content = UNMutableNotificationContent()
+//        content.title = "Hello!"
+//        content.body = "I am a local notification"
+//        content.sound = UNNotificationSound.default
+//        //通知的时间
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+//        //内容和时间封装为请求
+//        let request = UNNotificationRequest(identifier: "MyNotification", content: content, trigger: trigger)
+//        //请求交给center处理
+//        center.add(request)
+        
         return true
     }
     
@@ -50,6 +77,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK:- Helper Methods
     func saveData(){
         dataModel.saveChecklists()
+    }
+    
+    //MARK:- User Notification Delegate
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("Received local notification \(notification)")
     }
 
 

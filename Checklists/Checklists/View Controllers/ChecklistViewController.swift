@@ -76,6 +76,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
                        with item: ChecklistItem){
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
+//        label.text = "\(item.itemID): \(item.text)"
     }
     
     //允许删除
@@ -110,6 +111,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         //让View显示一个新的行
         tableView.insertRows(at: indexPaths, with: .automatic)
         
+                
         //退出Add Item页面
         navigationController?.popViewController(animated: true)
         
